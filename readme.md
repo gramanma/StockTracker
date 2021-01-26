@@ -10,14 +10,13 @@ Max Graman
 
 ## Introduction 
 
-Do you remember when you planted the apple tree?  Do you know when to water and fertilize your plants? MyPlantDiary can help you:  
+Have you ever needed to track a stock on the go?  Are you sick of needed to drive to the nearest Bloomberg terminal to see stock prices? StockTracker can help you:  
 
--	Record dates and locations where you planted plants.
--	Take and view photos of a plant throughout its life.
--	Record when you added water, fertilizer, and other amendments.
--	Be aware of upcoming events for a plant: when to water, when growing season ends, etc.  
+-	Add your favorite stocks and cryptocurrencies to a list.
+-	View the latest price of stocks and cryptocurrencies.
+-	Read news about stocks and cryptocurrencies. 
 
-Use your Android device to create your own plant diary.  Take photos with the on-device camera.  Create reminders based on what you did in previous years.   Receive alerts about upcoming events for your plant.  
+Use your Android device to create your watchlist and personalized news feed.  Take the last prices of your investments on the go.  
 
 ## Storyboard
 
