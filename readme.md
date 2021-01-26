@@ -4,7 +4,9 @@
 
 Design Document  
 
-Brandan Jones  
+Nathan Coffee
+Matthew Saling
+Max Graman  
 
 ## Introduction 
 
@@ -25,93 +27,78 @@ Use your Android device to create your own plant diary.  Take photos with the on
 
 ## Functional Requirements
 
-### Requirement 100.0: Search for Plants
+### Requirement 100.0: Search for Stocks & Crypto
 
 #### Scenario
 
-As a user interested in plants, I want to be able to search plants based on any part of the name: genus, species, cultivar, or common name.  
+As a user interested investing in stocks and cryptocurrency, I want to be able to search stocks and crypto based on any part of the name: ticker or company name.  
 
 #### Dependencies
 
-Plant search data are available and accessible.  
+Stock and crypto price data are available and accessible. (Yahoo Finanace API) 
 
 #### Assumptions
 
-Scientific names are stated in Latin.  
+Company names are in English.  
 
-Common names are stated in English.  
+Market data is up to date / live.  
 
 #### Examples
 1.1  
 
-**Given** a feed of plant data is available  
+**Given** a feed of stock/crypto data is available  
 
-**When**  I search for “Redbud”  
+**When**  I search for “GME”  
 
 **Then** I should receive at least one result with these attributes:  
 
-Genus: Cercis  
-
-Species: canadensis  
-
-Common: Eastern Redbud  
+Company name: GameStop  
+Ticker: GME  
+Last Price: $147.98  
 
 
 1.2  
-**Given** a feed of plant data is available  
+**Given** a feed of stock/crypto data is available  
 
-**When** I search for “Quercus”  
+**When** I search for “Bitcoin”  
 
 **Then** I should receive at least one result with these attributes:   
 
-Genus: Quercus  
-Species: robur  
-Common: English Oak  
-And I should receive at least one result with these attributes:  
-Genus: Quercus  
-Species: alba  
-Common: White Oak  
+Cryptocurrency name: Bitcoin  
+Ticker: BTC  
+Last Price: $10000
+ 
 
 1.3  
-**Given** a feed of plant data is available  
-**When** I search for “sklujapouetllkjsda;u”  
-**Then** I should receive zero results (an empty list)  
+**Given** a feed of stock/crypto data is available  
+**When** I search for “jksdnfgjksndfg93”  
+**Then** I should receive zero results  
 
 
-### Requirement 101: Save Specimen
+### Requirement 101: Save Stocks/Crypto Tickers to a List
 
 #### Scenario
 
-As a user interested in plants, I want to be able to enter and save details of a specimen: date planted, photos, and locations, so that I can view a history of this plant.  
+As a user interested investing in stocks and cryptocurrency, I want to be able to search stocks and crypto based on any part of the name: ticker or company name to save them to a list of watched stocks.     
 
 #### Dependencies
-Plant search data are available and accessible.  
-The device has a camera, and the user has granted access to the camera.  
-The device has GPS capabilities, and the user has granted location access.  
+Stock and crypto price data are available and accessible. (Yahoo Finanace API)  
 
 #### Assumptions  
-Scientific names are stated in Latin.  
-Common names are stated in English.  
+Company names are in English.  
+Market data is up to date / live. 
 
 #### Examples  
 
 1.1  
 **Given** a feed of plant data is available  
-**Given** GPS details are available  
+**Given** Stock/crypto tickers are available  
 **When**  
 
--	Select the plant Asimina triloba  
--	Add notes: “planted by Brandan Jones”  
-**Then**  when I navigate to the Specimen History view, I should see at least one Asimina triloba specimen with the notes, “planted by Brandan Jones”  
-
-2.1  
-**Given** a feed of plant data is available  
-**Given** GPS details are available  
-**When**   
-
--	Select the plant Malus domestica ‘Fuji’  
--	Take a photo of a Fuji apple seedling  
-**Then** when I navigate to the Specimen History view, I should see at least one Malus domestica ‘Fuji’ specimen with the a photo of a Fuji apple seedling.  
+-	Select the stock GameStop  
+-   View the historical data
+-   Add to a list
+**Then**  when I navigate to the Watchlist view, I should see a entry for GameStop with the option to remove it & the last price.  
 
 ## Class Diagram
 
@@ -120,34 +107,28 @@ Common names are stated in English.
 ### Class Diagram Description
 
 
-**MainActivity:**  The first screen the user sees.  This will have a list of specimens, and an option to enter a new specimen.  
+**MainActivity:**  The first screen the user sees.  This will have a list of stocks & cryptocurrencies and a news feed.
 
-**SpecimenDetailsActivity:**  A screen that shows details of a specimen.  
+**TickerDetailsActivity:**  A screen that shows details of a given stock.  
 
 **RetrofitInstance:** Boostrap class required for Retrofit.  
 
-**Plant:** Noun class that represents a plant.  
+**Ticker:** Noun class that represents a stock/crypto.  
 
-**Specimen:** Noun class that represents a specimen.  
-
-**IPlantDAO:** Interface for Retrofit to find and parse Plant JSON.  
-
-**ISpecimenDAO:** Interface for Room to persist Specimen data  
+**ITickerDAO:** Interface for Retrofit to find and parse ticker JSON.  
 
 ## Scrum Roles
 
-- DevOps/Product Owner/Scrum Master: Brandan Jones  
-- Frontend Developer: Brandan Jones  
-- Integration Developer: Brandan Jones  
+- DevOps/Product Owner/Scrum Master: Matthew Saling
+- Frontend Developer: Max Graman  
+- Integration Developer: Nathan Coffee  
 
 ## Weekly Meeting
 
-Sunday at 7 PM.  Use this WebEx:
+Tuesdays at 5 PM.  Use this discord:
 
 Meeting Information
-[Office Hours WebEx](https://ucincinnati.webex.com/ucincinnati/j.php?MTID=m4eae59003bb943cc093fcd3f287864db)
-Meeting number:
-616 881 859
+[Discord](https://discord.gg/m8pXX3Ex2G)
 
 
 
