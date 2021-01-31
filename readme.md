@@ -21,7 +21,7 @@ Use your Android device to create your watchlist and personalized news feed.  Ta
 
 [StockTrader Storyboard](https://www.fluidui.com/editor/live/project/p_cTrwk2yPhweCZmQo8kZMIkh41C5ESBpG)
 
-![StockTraderFirstScreen](https://user-images.githubusercontent.com/2224876/82161817-15ee8880-986e-11ea-8cda-f04ad1412893.png)
+![StockTraderFirstScreen](https://user-images.githubusercontent.com/58449342/106372946-f7b8b200-6342-11eb-96dd-930214495ded.JPG)
 
 ## Functional Requirements
 
