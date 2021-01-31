@@ -100,7 +100,7 @@ Market data is up to date / live.
 
 ## Class Diagram
 
-![ClassDiagram](https://user-images.githubusercontent.com/2224876/82162015-54387780-986f-11ea-998f-a45fdf8c3bf1.png)
+![ClassDiagram](https://raw.githubusercontent.com/gramanma/StockTracker/7762811e153241c2e6a691d92ad8fa679ca91550/unknown.png)
 
 ### Class Diagram Description
 
