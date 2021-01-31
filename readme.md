@@ -19,9 +19,9 @@ Use your Android device to create your watchlist and personalized news feed.  Ta
 
 ## Storyboard
 
-[StockTrader Storyboard](https://www.fluidui.com/editor/live/project/p_cTrwk2yPhweCZmQo8kZMIkh41C5ESBpG)
+[StockTracker Storyboard](https://www.fluidui.com/editor/live/project/p_cTrwk2yPhweCZmQo8kZMIkh41C5ESBpG)
 
-![StockTraderFirstScreen](https://user-images.githubusercontent.com/58449342/106372946-f7b8b200-6342-11eb-96dd-930214495ded.JPG)
+![StockTrackerFirstScreen](https://user-images.githubusercontent.com/58449342/106372946-f7b8b200-6342-11eb-96dd-930214495ded.JPG)
 
 ## Functional Requirements
 
@@ -111,9 +111,13 @@ Market data is up to date / live.
 
 **RetrofitInstance:** Boostrap class required for Retrofit.  
 
-**Ticker:** Noun class that represents a stock/crypto.  
+**Ticker:** Noun class that represents a stock/crypto. 
 
-**ITickerDAO:** Interface for Retrofit to find and parse ticker JSON.  
+**UserList:** List class which contains a List containing a ListArray of Objects to be stored, namely the ticker name and price. 
+
+**ITickerDAO:** Interface for Retrofit to find and parse ticker JSON.
+
+**IUserListDAO:** Interface for Retrofit to find and parse UserList JSON.
 
 ## Scrum Roles
 
