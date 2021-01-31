@@ -5,7 +5,9 @@
 Design Document  
 
 Nathan Coffee
+
 Matthew Saling
+
 Max Graman  
 
 ## Introduction 
