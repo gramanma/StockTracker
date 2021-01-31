@@ -2,7 +2,8 @@
 
 ---
 
-Design Document
+Design Document  
+
 Nathan Coffee  
 Matthew Saling  
 Max Graman  
