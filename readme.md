@@ -117,8 +117,8 @@ Market data is up to date / live.
 
 ## Scrum Roles
 
-- DevOps/Product Owner/Scrum Master: Matthew Saling
-- Frontend Developer: Max Graman  
+- Product Owner/Scrum Master: Matthew Saling
+- DevOps/Frontend Developer: Max Graman  
 - Integration Developer: Nathan Coffee  
 
 ## Weekly Meeting
