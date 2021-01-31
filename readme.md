@@ -2,14 +2,10 @@
 
 ---
 
-Design Document  
-
-Nathan Coffee
-
-Matthew Saling
-
+Design Document
+Nathan Coffee  
+Matthew Saling  
 Max Graman  
-
 ## Introduction 
 
 Have you ever needed to track a stock on the go?  Are you sick of needed to drive to the nearest Bloomberg terminal to see stock prices? StockTracker can help you:  
