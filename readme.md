@@ -1,12 +1,13 @@
-# StockTracker
+# My Plant Diary 
 
 ---
 
 Design Document  
 
-Nathan Coffee  
-Matthew Saling  
+Nathan Coffee
+Matthew Saling
 Max Graman  
+
 ## Introduction 
 
 Have you ever needed to track a stock on the go?  Are you sick of needed to drive to the nearest Bloomberg terminal to see stock prices? StockTracker can help you:  
@@ -19,9 +20,9 @@ Use your Android device to create your watchlist and personalized news feed.  Ta
 
 ## Storyboard
 
-[StockTracker Storyboard](https://www.fluidui.com/editor/live/project/p_cTrwk2yPhweCZmQo8kZMIkh41C5ESBpG)
+[Plant Diary Storyboard](https://projects.invisionapp.com/prototype/Plant-Diary-ck0bict0n005bqh01aaeu8tuu/play/c6560121)
 
-![StockTrackerFirstScreen](https://user-images.githubusercontent.com/58449342/106372946-f7b8b200-6342-11eb-96dd-930214495ded.JPG)
+![MyPlantDiaryFirstScreen](https://user-images.githubusercontent.com/2224876/82161817-15ee8880-986e-11ea-8cda-f04ad1412893.png)
 
 ## Functional Requirements
 
@@ -100,7 +101,7 @@ Market data is up to date / live.
 
 ## Class Diagram
 
-![ClassDiagram](https://raw.githubusercontent.com/gramanma/StockTracker/7762811e153241c2e6a691d92ad8fa679ca91550/unknown.png)
+![ClassDiagram](https://user-images.githubusercontent.com/2224876/82162015-54387780-986f-11ea-998f-a45fdf8c3bf1.png)
 
 ### Class Diagram Description
 
@@ -111,18 +112,14 @@ Market data is up to date / live.
 
 **RetrofitInstance:** Boostrap class required for Retrofit.  
 
-**Ticker:** Noun class that represents a stock/crypto. 
+**Ticker:** Noun class that represents a stock/crypto.  
 
-**UserList:** List class which contains a List containing a ListArray of Objects to be stored, namely the ticker name and price. 
-
-**ITickerDAO:** Interface for Retrofit to find and parse ticker JSON.
-
-**IUserListDAO:** Interface for Retrofit to find and parse UserList JSON.
+**ITickerDAO:** Interface for Retrofit to find and parse ticker JSON.  
 
 ## Scrum Roles
 
-- Product Owner/Scrum Master: Matthew Saling
-- DevOps/Frontend Developer: Max Graman  
+- DevOps/Product Owner/Scrum Master: Matthew Saling
+- Frontend Developer: Max Graman  
 - Integration Developer: Nathan Coffee  
 
 ## Weekly Meeting
