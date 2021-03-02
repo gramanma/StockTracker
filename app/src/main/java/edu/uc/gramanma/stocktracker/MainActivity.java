@@ -22,6 +22,11 @@ public class MainActivity extends AppCompatActivity {
     List<String> expandableListTitle;
     HashMap<String, List<String>> expandableListDetail;
 
+    /**
+     * What the program does on creation, here it draws the list, among other UI features.
+     * There are also submethods that handle the list.
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

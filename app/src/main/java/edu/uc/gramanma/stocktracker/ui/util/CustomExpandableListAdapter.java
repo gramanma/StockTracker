@@ -12,12 +12,22 @@ import android.widget.TextView;
 
 import edu.uc.gramanma.stocktracker.R;
 
+
+/**
+ * @author Max Graman (gramanma)
+ */
 public class CustomExpandableListAdapter extends BaseExpandableListAdapter {
 
     private Context context;
     private List<String> expandableListTitle;
     private HashMap<String, List<String>> expandableListDetail;
 
+    /**
+     *
+     * @param context, context for ListAdapter.
+     * @param expandableListTitle, title of the list
+     * @param expandableListDetail, each child object in the list
+     */
     public CustomExpandableListAdapter(Context context, List<String> expandableListTitle,
                                        HashMap<String, List<String>> expandableListDetail) {
         this.context = context;
@@ -25,17 +35,38 @@ public class CustomExpandableListAdapter extends BaseExpandableListAdapter {
         this.expandableListDetail = expandableListDetail;
     }
 
+    /**
+     *
+     * @param listPosition, position on the screen.
+     * @param expandedListPosition, position of the expanded list.
+     * @return, the list.
+     */
     @Override
     public Object getChild(int listPosition, int expandedListPosition) {
         return this.expandableListDetail.get(this.expandableListTitle.get(listPosition))
                 .get(expandedListPosition);
     }
 
+    /**
+     *
+     * @param listPosition, position of the list.
+     * @param expandedListPosition, list expanded position.
+     * @return, the position of the list.
+     */
     @Override
     public long getChildId(int listPosition, int expandedListPosition) {
         return expandedListPosition;
     }
 
+    /**
+     *
+     * @param listPosition, see above
+     * @param expandedListPosition, see above
+     * @param isLastChild, is this node the last one in the list
+     * @param convertView, target view.
+     * @param parent, parent view group.
+     * @return, the converted view.
+     */
     @Override
     public View getChildView(int listPosition, final int expandedListPosition,
                              boolean isLastChild, View convertView, ViewGroup parent) {
@@ -51,12 +82,23 @@ public class CustomExpandableListAdapter extends BaseExpandableListAdapter {
         return convertView;
     }
 
+    /**
+     * Returns the number of nodes in the list.
+     *
+     * @param listPosition, position of the list
+     * @return
+     */
     @Override
     public int getChildrenCount(int listPosition) {
         return this.expandableListDetail.get(this.expandableListTitle.get(listPosition))
                 .size();
     }
 
+    /**
+     *
+     * @param listPosition
+     * @return
+     */
     @Override
     public Object getGroup(int listPosition) {
         return this.expandableListTitle.get(listPosition);
@@ -88,11 +130,21 @@ public class CustomExpandableListAdapter extends BaseExpandableListAdapter {
         return convertView;
     }
 
+    /**
+     * Sets stable Ids to false
+     * @return
+     */
     @Override
     public boolean hasStableIds() {
         return false;
     }
 
+    /**
+     *
+     * @param listPosition
+     * @param expandedListPosition
+     * @return
+     */
     @Override
     public boolean isChildSelectable(int listPosition, int expandedListPosition) {
         return true;
