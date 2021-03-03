@@ -9,6 +9,10 @@ import retrofit2.Response
 
 class StockService {
 
+    /**
+     * This method grabs JSON data using Retrofit and returns it in an Array
+     * @return an array of stocks.
+     */
     fun fetchStocks(): MutableLiveData<ArrayList<Stock>> {
 
         var _stocks = MutableLiveData<ArrayList<Stock>>()

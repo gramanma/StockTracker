@@ -9,10 +9,16 @@ class MainViewModel : ViewModel() {
     var stocks: MutableLiveData<ArrayList<Stock>> = MutableLiveData<ArrayList<Stock>>()
     var stockService: StockService = StockService()
 
+    /**
+     * Initialize the MVM.
+     */
     init {
         fetchStocks()
     }
 
+    /**
+     * Gets the stocks using the stock service.
+     */
     fun fetchStocks() {
         stocks = stockService.fetchStocks()
     }

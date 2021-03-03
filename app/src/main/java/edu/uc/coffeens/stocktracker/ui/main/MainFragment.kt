@@ -19,6 +19,9 @@ class MainFragment : Fragment() {
 
     private lateinit var viewModel: MainViewModel
 
+    /**
+     * This is what to do when the View is rendered.
+     */
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -26,6 +29,9 @@ class MainFragment : Fragment() {
         return inflater.inflate(R.layout.main_fragment, container, false)
     }
 
+    /**
+     *  This is what happened when the activity is rendered.
+     */
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProvider(this).get(MainViewModel::class.java)
@@ -40,5 +46,6 @@ class MainFragment : Fragment() {
         })
         viewModel.fetchStocks()
     }
+
 
 }
