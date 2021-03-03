@@ -3,10 +3,11 @@ package edu.uc.coffeens.stocktracker
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import edu.uc.coffeens.stocktracker.dto.Stock
 import edu.uc.coffeens.stocktracker.ui.main.MainViewModel
-import org.junit.Test
-import org.junit.Assert.*
+import org.junit.Assert.assertNotNull
+import org.junit.Assert.assertTrue
 import org.junit.Before
 import org.junit.Rule
+import org.junit.Test
 import org.junit.rules.TestRule
 
 /**
@@ -35,18 +36,20 @@ class StockUnitTest {
             "MMM",
             "3M",
             "3M, based in Minnesota, may be best known for its Scotch tape and Post-It Notes, but it also produces sand paper, adhesives, medical products, computer screen filters, food safety items, stationery products and many products used in automotive, marine, and aircraft industries.",
-            "44.28")
+            "44.28"
+        )
         assertTrue(stock.stockTicker.equals("MMM"))
         assertTrue(stock.stockCompany.equals("3M"))
     }
 
     @Test
     fun stockDTO_toStringFormat() {
-       var stock = Stock(
+        var stock = Stock(
             "MMM",
             "3M",
             "3M, based in Minnesota, may be best known for its Scotch tape and Post-It Notes, but it also produces sand paper, adhesives, medical products, computer screen filters, food safety items, stationery products and many products used in automotive, marine, and aircraft industries.",
-            "44.28")
+            "44.28"
+        )
         assertTrue(stock.toString().equals("3M: MMM \$44.28"))
     }
 
@@ -67,7 +70,7 @@ class StockUnitTest {
 
     private fun thenTheCollectionSizeShouldBeGreaterThanZero() {
         var allStocks = ArrayList<Stock>()
-        mvm.stocks.observeForever{
+        mvm.stocks.observeForever {
             allStocks = it
         }
         Thread.sleep(5000)
@@ -84,7 +87,7 @@ class StockUnitTest {
     }
 
     private fun thenResultsShouldContain3M() {
-        var contains3M:Boolean = false
+        var contains3M: Boolean = false
         mvm.stocks.observeForever {
             it.forEach {
                 if (it.stockCompany.equals("3M")) {

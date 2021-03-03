@@ -13,7 +13,7 @@ class MainViewModel : ViewModel() {
         fetchStocks()
     }
 
-    fun fetchStocks(){
+    fun fetchStocks() {
         stocks = stockService.fetchStocks()
     }
 }

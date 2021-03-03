@@ -9,12 +9,12 @@ import retrofit2.Response
 
 class StockService {
 
-    fun fetchStocks() : MutableLiveData<ArrayList<Stock>> {
+    fun fetchStocks(): MutableLiveData<ArrayList<Stock>> {
 
         var _stocks = MutableLiveData<ArrayList<Stock>>()
         val service = RetrofitClientInstance.retrofitInstance?.create(IStockDAO::class.java)
         val call = service?.getAllStocks()
-        call?.enqueue(object: Callback<ArrayList<Stock>> {
+        call?.enqueue(object : Callback<ArrayList<Stock>> {
             override fun onFailure(call: Call<ArrayList<Stock>>, t: Throwable) {
                 print("Unable to retrieve service response.")
             }

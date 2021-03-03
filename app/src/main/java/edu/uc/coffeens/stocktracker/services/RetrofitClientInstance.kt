@@ -8,8 +8,8 @@ object RetrofitClientInstance {
     private var retrofit: Retrofit? = null;
     private val BASE_URL = "https://gist.githubusercontent.com/"
 
-    val retrofitInstance : Retrofit?
-        get(){
+    val retrofitInstance: Retrofit?
+        get() {
             //Has this object been created?
             if (retrofit == null) {
                 // Create retrofit instance
