@@ -1,5 +1,3 @@
 <resources>
     <string name="app_name">StockTracker</string>
-    <string name="btnAddTicker">Add Stock / Crypto</string>
-    <string name="lblNews">Relevant News:</string>
 </resources>
