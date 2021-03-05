@@ -36,13 +36,7 @@ class MainFragment : Fragment() {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProvider(this).get(MainViewModel::class.java)
         viewModel.stocks.observe(viewLifecycleOwner, Observer { stocks ->
-            actStock.setAdapter(
-                ArrayAdapter(
-                    context!!,
-                    R.layout.support_simple_spinner_dropdown_item,
-                    stocks
-                )
-            )
+            actStock.setAdapter(ArrayAdapter(context!!, R.layout.support_simple_spinner_dropdown_item, stocks))
         })
         viewModel.fetchStocks()
     }
