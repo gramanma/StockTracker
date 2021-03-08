@@ -11,29 +11,15 @@ import androidx.lifecycle.ViewModelProvider
 import edu.uc.coffeens.stocktracker.R
 import kotlinx.android.synthetic.main.main_fragment.*
 
-class MainFragment : Fragment() {
-
-    companion object {
-        fun newInstance() = MainFragment()
-    }
+class MainFragment : Fragment(R.layout.main_fragment) {
 
     private lateinit var viewModel: MainViewModel
 
     /**
-     * This is what to do when the View is rendered.
+     *  This is what happens when the activity is rendered.
      */
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        return inflater.inflate(R.layout.main_fragment, container, false)
-    }
-
-    /**
-     *  This is what happened when the activity is rendered.
-     */
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         viewModel = ViewModelProvider(this).get(MainViewModel::class.java)
         viewModel.stocks.observe(viewLifecycleOwner, Observer { stocks ->
             actStock.setAdapter(
@@ -44,8 +30,10 @@ class MainFragment : Fragment() {
                 )
             )
         })
-        viewModel.fetchStocks()
     }
 
+    companion object {
+        fun newInstance() = MainFragment()
+    }
 
 }

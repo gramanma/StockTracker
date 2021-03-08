@@ -1,5 +1,6 @@
 package edu.uc.coffeens.stocktracker.services
 
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import edu.uc.coffeens.stocktracker.dao.IStockDAO
 import edu.uc.coffeens.stocktracker.dto.Stock
@@ -15,24 +16,23 @@ class StockService {
      */
     fun fetchStocks(): MutableLiveData<ArrayList<Stock>> {
 
-        var _stocks = MutableLiveData<ArrayList<Stock>>()
+        val stocks = MutableLiveData<ArrayList<Stock>>()
         val service = RetrofitClientInstance.retrofitInstance?.create(IStockDAO::class.java)
         val call = service?.getAllStocks()
         call?.enqueue(object : Callback<ArrayList<Stock>> {
             override fun onFailure(call: Call<ArrayList<Stock>>, t: Throwable) {
-                print("Unable to retrieve service response.")
+                Log.d("Stock ArrayList Callback", "Something went wrong!", t)
             }
 
             override fun onResponse(
                 call: Call<ArrayList<Stock>>,
                 response: Response<ArrayList<Stock>>
             ) {
-                _stocks.value = response.body()
+                stocks.value = response.body()
             }
 
         })
-
-        return _stocks
+        return stocks
 
     }
 
