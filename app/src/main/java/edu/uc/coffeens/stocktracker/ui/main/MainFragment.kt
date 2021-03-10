@@ -35,7 +35,7 @@ class MainFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProvider(this).get(MainViewModel::class.java)
-        viewModel.stocks.observe(viewLifecycleOwner, Observer { stocks ->
+        viewModel.stock.observe(viewLifecycleOwner, Observer { stocks ->
             actStock.setAdapter(
                 ArrayAdapter(
                     context!!,
@@ -44,7 +44,7 @@ class MainFragment : Fragment() {
                 )
             )
         })
-        viewModel.fetchStocks()
+        viewModel.fetchStock()
     }
 
 
