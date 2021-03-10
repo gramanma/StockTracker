@@ -65,12 +65,12 @@ class StockUnitTest {
     }
 
     private fun whenJSONDataAreReadAndParsed() {
-        mvm.fetchStocks()
+        mvm.fetchStock()
     }
 
     private fun thenTheCollectionSizeShouldBeGreaterThanZero() {
         var allStocks = ArrayList<Stock>()
-        mvm.stocks.observeForever {
+        mvm.stock.observeForever {
             allStocks = it
         }
         Thread.sleep(5000)
@@ -88,7 +88,7 @@ class StockUnitTest {
 
     private fun thenResultsShouldContain3M() {
         var contains3M: Boolean = false
-        mvm.stocks.observeForever {
+        mvm.stock.observeForever {
             it.forEach {
                 if (it.stockCompany.equals("3M")) {
                     contains3M = true

@@ -13,9 +13,9 @@ class StockService {
      * This method grabs JSON data using Retrofit and returns it in an Array
      * @return an array of stocks.
      */
-    fun fetchStocks(): MutableLiveData<ArrayList<Stock>> {
+    fun fetchStock(): MutableLiveData<ArrayList<Stock>> {
 
-        var _stocks = MutableLiveData<ArrayList<Stock>>()
+        var _stock = MutableLiveData<ArrayList<Stock>>()
         val service = RetrofitClientInstance.retrofitInstance?.create(IStockDAO::class.java)
         val call = service?.getAllStocks()
         call?.enqueue(object : Callback<ArrayList<Stock>> {
@@ -27,12 +27,12 @@ class StockService {
                 call: Call<ArrayList<Stock>>,
                 response: Response<ArrayList<Stock>>
             ) {
-                _stocks.value = response.body()
+                _stock.value = response.body()
             }
 
         })
 
-        return _stocks
+        return _stock
 
     }
 
