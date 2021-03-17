@@ -65,7 +65,8 @@ class MainFragment : Fragment() {
      */
     private fun logon() {
         var providers = arrayListOf(
-            AuthUI.IdpConfig.EmailBuilder().build()
+            AuthUI.IdpConfig.EmailBuilder().build(),
+            AuthUI.IdpConfig.GoogleBuilder().build()
         )
         startActivityForResult(
             AuthUI.getInstance().createSignInIntentBuilder().setAvailableProviders(providers)
