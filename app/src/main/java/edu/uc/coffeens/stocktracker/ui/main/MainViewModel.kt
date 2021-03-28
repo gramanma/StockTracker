@@ -5,13 +5,15 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.FirebaseFirestoreSettings
+import com.google.firebase.storage.FirebaseStorage
 import edu.uc.coffeens.stocktracker.dto.Stock
 import edu.uc.coffeens.stocktracker.services.StockService
 
 class MainViewModel : ViewModel() {
     var stock: MutableLiveData<ArrayList<Stock>> = MutableLiveData<ArrayList<Stock>>()
     var stockService: StockService = StockService()
-    lateinit var firestore : FirebaseFirestore
+    private lateinit var firestore : FirebaseFirestore
+    private var storageReferenence = FirebaseStorage.getInstance().getReference()
 
     /**
      * Initialize the MVM.

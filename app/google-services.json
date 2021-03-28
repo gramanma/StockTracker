@@ -14,6 +14,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "356584256259-4ru6rcbvdj3bab0m19qtpldg7cff2pgr.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "edu.uc.coffeens.stocktracker",
+            "certificate_hash": "22758ee3a4a5e29db2fdf504bf06fb49775eff07"
+          }
+        },
+        {
           "client_id": "356584256259-cjvb5e8v3utdn03oe6verimvr6h8rk80.apps.googleusercontent.com",
           "client_type": 3
         }
