@@ -10,10 +10,10 @@ import edu.uc.coffeens.stocktracker.dto.Stock
 import edu.uc.coffeens.stocktracker.services.StockService
 
 class MainViewModel : ViewModel() {
-    var stock: MutableLiveData<ArrayList<Stock>> = MutableLiveData<ArrayList<Stock>>()
+    var stocks: MutableLiveData<ArrayList<Stock>> = MutableLiveData<ArrayList<Stock>>()
     var stockService: StockService = StockService()
     private lateinit var firestore : FirebaseFirestore
-    private var storageReferenence = FirebaseStorage.getInstance().getReference()
+
 
     /**
      * Initialize the MVM.
@@ -28,17 +28,16 @@ class MainViewModel : ViewModel() {
      * Gets the stocks using the stock service.
      */
     fun fetchStock() {
-        stock = stockService.fetchStock()
+        stocks = stockService.fetchStock()
     }
 
     fun save(stocks: Stock) {
-        firestore.collection("Stocks")
-            .document()
-            .set(stocks)
-            .addOnSuccessListener {
+        val document = firestore.collection("Stocks").document()
+        val set = document.set(stocks)
+            set.addOnSuccessListener {
                 Log.d("Firebase", "document saved")
             }
-            .addOnFailureListener {
+            set.addOnFailureListener {
                 Log.d("Firebase", "save failed")
             }
     }
