@@ -1,5 +1,6 @@
 package edu.uc.coffeens.stocktracker.services
 
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import edu.uc.coffeens.stocktracker.dao.IStockDAO
 import edu.uc.coffeens.stocktracker.dto.Stock
@@ -20,7 +21,7 @@ class StockService {
         val call = service?.getAllStocks()
         call?.enqueue(object : Callback<ArrayList<Stock>> {
             override fun onFailure(call: Call<ArrayList<Stock>>, t: Throwable) {
-                print("Unable to retrieve service response.")
+                Log.e("Retrofit", "unable to receive service response")
             }
 
             override fun onResponse(
