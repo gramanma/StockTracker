@@ -8,6 +8,8 @@ import com.google.gson.annotations.SerializedName
 data class Stock(
     @SerializedName("symbol") var stockTicker: String,
     @SerializedName("company") var stockCompany: String,
+    @SerializedName("Opening Price") var OpeningPrice: String,
+    @SerializedName("Closing Price") var ClosingPrice: String,
     @SerializedName("description") var stockDescription: String,
     @SerializedName("initial_price") var stockPrice: String
 ) {

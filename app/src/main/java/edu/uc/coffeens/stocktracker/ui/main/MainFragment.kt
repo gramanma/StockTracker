@@ -94,8 +94,12 @@ class MainFragment : Fragment() {
 
     fun getClickedStock(view: View) {
         Log.d("[SEARCH BAR]", "Clicked a stock.")
+
     }
 
+    fun createStockList(view: View) {
+
+    }
 
 
 
