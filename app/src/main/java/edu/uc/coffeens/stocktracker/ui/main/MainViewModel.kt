@@ -28,16 +28,4 @@ class MainViewModel : ViewModel() {
     fun fetchStock() {
         stock = stockService.fetchStock()
     }
-
-    fun save(stocks: Stock) {
-        firestore.collection("Stocks")
-            .document()
-            .set(stocks)
-            .addOnSuccessListener {
-                Log.e("Firebase", "document saved")
-            }
-            .addOnFailureListener {
-                Log.e("Firebase", "save failed")
-            }
-    }
 }
