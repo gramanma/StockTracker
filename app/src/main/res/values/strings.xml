@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">StockTracker</string>
+    <string name="actStock_Text">Enter stock</string>
+    <string name="btnLogin_Text">Login</string>
 </resources>

@@ -2,14 +2,11 @@ package edu.uc.coffeens.stocktracker.ui.main
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
-import android.widget.Button
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.firebase.ui.auth.AuthUI
 import com.google.firebase.auth.FirebaseAuth
@@ -50,7 +47,7 @@ class MainFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProvider(this).get(MainViewModel::class.java)
-        viewModel.stock.observe(viewLifecycleOwner, Observer { stocks ->
+        viewModel.stock.observe(viewLifecycleOwner, { stocks ->
             actStock.setAdapter(
                 ArrayAdapter(
                     context!!,
@@ -69,7 +66,7 @@ class MainFragment : Fragment() {
      * Function to be called by the log on button
      */
     private fun logon() {
-        var providers = arrayListOf(
+        val providers = arrayListOf(
             AuthUI.IdpConfig.EmailBuilder().build(),
             AuthUI.IdpConfig.GoogleBuilder().build()
         )
@@ -91,12 +88,6 @@ class MainFragment : Fragment() {
             }
         }
     }
-
-    fun getClickedStock(view: View) {
-        Log.d("[SEARCH BAR]", "Clicked a stock.")
-    }
-
-
 
 
 }
