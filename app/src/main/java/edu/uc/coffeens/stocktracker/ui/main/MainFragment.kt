@@ -85,8 +85,10 @@ class MainFragment : Fragment() {
      */
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        if (resultCode == RESULT_OK && requestCode == AUTH_REQUEST_CODE) {
-            user = FirebaseAuth.getInstance().currentUser
+        if (resultCode == RESULT_OK) {
+            if (requestCode == AUTH_REQUEST_CODE) {
+                user = FirebaseAuth.getInstance().currentUser
+            }
         }
     }
 
