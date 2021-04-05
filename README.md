@@ -5,7 +5,7 @@
 Design Document  
 
 Nathan Coffee  
-Matthew Saling  
+~Matthew Saling~  
 Max Graman  
 ## Introduction 
 
@@ -117,7 +117,7 @@ Market data is up to date / live.
 
 ## Scrum Roles
 
-- Product Owner/Scrum Master: Matthew Saling
+- ~Product Owner/Scrum Master: Matthew Saling~
 - DevOps/Frontend Developer: Max Graman  
 - Integration Developer: Nathan Coffee  
 

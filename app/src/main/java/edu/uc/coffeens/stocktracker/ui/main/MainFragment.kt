@@ -65,6 +65,10 @@ class MainFragment : Fragment() {
         }
     }
 
+    fun getClickedStock(view: View) {
+        Log.d("[SEARCH BAR]", "Clicked a stock.")
+    }
+    
     /**
      * Function to be called by the log on button
      */
@@ -91,12 +95,5 @@ class MainFragment : Fragment() {
             }
         }
     }
-
-    fun getClickedStock(view: View) {
-        Log.d("[SEARCH BAR]", "Clicked a stock.")
-    }
-
-
-
 
 }
