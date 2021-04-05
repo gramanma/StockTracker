@@ -13,7 +13,7 @@ class MainViewModel : ViewModel() {
     var stock: MutableLiveData<ArrayList<Stock>> = MutableLiveData<ArrayList<Stock>>()
     var stockService: StockService = StockService()
     private lateinit var firestore : FirebaseFirestore
-    private var storageReferenence = FirebaseStorage.getInstance().getReference()
+    private var storageReference = FirebaseStorage.getInstance().getReference()
 
     /**
      * Initialize the MVM.
@@ -31,15 +31,18 @@ class MainViewModel : ViewModel() {
         stock = stockService.fetchStock()
     }
 
-    fun save(stocks: Stock) {
+    /**
+     * TODO: Implement data save function
+     */
+    fun save(stock: Stock) {
         firestore.collection("Stocks")
             .document()
-            .set(stocks)
+            .set(stock)
             .addOnSuccessListener {
-                Log.d("Firebase", "document saved")
+                Log.i("Firebase", "document saved")
             }
             .addOnFailureListener {
-                Log.d("Firebase", "save failed")
+                Log.e("Firebase", "save failed")
             }
     }
 }
