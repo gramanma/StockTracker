@@ -22,4 +22,21 @@ data class Stock(
     override fun toString(): String {
         return "$stockCompany: $stockTicker \$$stockPrice"
     }
+
+    /**
+     * Send a stock to Firebase, where it will be stored in a users list
+     * @param string stock to be saved to list
+     */
+    fun saveToFirebase(string: String) {
+        //TODO: Add method for saving things to Firebase
+    }
+
+    /**
+     * Remove a stock from a users list, if it exists
+     * @param string stock to be removed
+     */
+    fun removeFromFirebase(string: String) {
+        //TODO: Add method for removing things from Firebase
+    }
+
 }
