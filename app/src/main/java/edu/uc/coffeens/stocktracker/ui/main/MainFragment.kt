@@ -2,6 +2,7 @@ package edu.uc.coffeens.stocktracker.ui.main
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -69,7 +70,7 @@ class MainFragment : Fragment() {
      */
     private fun logUserInOrOut() {
         user = FirebaseAuth.getInstance().currentUser
-        if ( user == null) {
+        if (user == null) {
             var providers = arrayListOf(
                 AuthUI.IdpConfig.EmailBuilder().build(),
                 AuthUI.IdpConfig.GoogleBuilder().build()
@@ -80,12 +81,10 @@ class MainFragment : Fragment() {
             )
             btnLogin.text = "Logout";
         } else if (user != null) {
+            Log.i("Firebase", "user " + user + "signed out successfully.")
             FirebaseAuth.getInstance().signOut()
             btnLogin.text = "Login";
         }
-
-
-        //TODO: Add logic for detecting if user is signed in.
     }
 
     /**
@@ -96,6 +95,7 @@ class MainFragment : Fragment() {
         if (resultCode == RESULT_OK) {
             if (requestCode == AUTH_REQUEST_CODE) {
                 user = FirebaseAuth.getInstance().currentUser
+                Log.i("Firebase", "user " + user + "signed in successfully.")
             }
         }
     }
