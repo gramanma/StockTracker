@@ -22,4 +22,5 @@ data class Stock(
     override fun toString(): String {
         return "$stockCompany: $stockTicker \$$stockPrice"
     }
+
 }

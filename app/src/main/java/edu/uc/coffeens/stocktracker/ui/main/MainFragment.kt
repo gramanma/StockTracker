@@ -1,16 +1,12 @@
 package edu.uc.coffeens.stocktracker.ui.main
 
-import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.util.AttributeSet
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.AdapterView
-import android.widget.AdapterView.OnItemClickListener
 import android.widget.ArrayAdapter
-import androidx.appcompat.widget.AppCompatAutoCompleteTextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -33,7 +29,12 @@ class MainFragment : Fragment() {
     private var user: FirebaseUser? = null
 
     companion object {
+        private var user: FirebaseUser? = null
         fun newInstance() = MainFragment()
+        fun getUserID(): String {
+            user = FirebaseAuth.getInstance().currentUser
+            return user!!.uid
+        }
     }
 
     private lateinit var viewModel: MainViewModel
@@ -65,23 +66,32 @@ class MainFragment : Fragment() {
         })
         viewModel.fetchStock()
         btnLogin.setOnClickListener {
-            logon()
+            logUserInOrOut()
         }
     }
+
+
 
     /**
      * Function to be called by the log on button
      */
-    private fun logon() {
-        var providers = arrayListOf(
-            AuthUI.IdpConfig.EmailBuilder().build(),
-            AuthUI.IdpConfig.GoogleBuilder().build()
-        )
-        startActivityForResult(
-            AuthUI.getInstance().createSignInIntentBuilder().setAvailableProviders(providers)
-                .build(), AUTH_REQUEST_CODE
-        )
-        //TODO: Add logic for detecting if user is signed in.
+    private fun logUserInOrOut() {
+        user = FirebaseAuth.getInstance().currentUser
+        if (user == null) {
+            var providers = arrayListOf(
+                AuthUI.IdpConfig.EmailBuilder().build(),
+                AuthUI.IdpConfig.GoogleBuilder().build()
+            )
+            startActivityForResult(
+                AuthUI.getInstance().createSignInIntentBuilder().setAvailableProviders(providers)
+                    .build(), AUTH_REQUEST_CODE
+            )
+            btnLogin.text = "Logout";
+        } else if (user != null) {
+            Log.i("Firebase", "user " + user + "signed out successfully.")
+            FirebaseAuth.getInstance().signOut()
+            btnLogin.text = "Login";
+        }
     }
 
     /**
@@ -92,6 +102,7 @@ class MainFragment : Fragment() {
         if (resultCode == RESULT_OK) {
             if (requestCode == AUTH_REQUEST_CODE) {
                 user = FirebaseAuth.getInstance().currentUser
+                Log.i("Firebase", "user " + user + "signed in successfully.")
             }
         }
     }
