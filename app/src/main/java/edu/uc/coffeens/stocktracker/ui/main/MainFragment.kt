@@ -1,13 +1,16 @@
 package edu.uc.coffeens.stocktracker.ui.main
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
+import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AdapterView
+import android.widget.AdapterView.OnItemClickListener
 import android.widget.ArrayAdapter
-import android.widget.Button
+import androidx.appcompat.widget.AppCompatAutoCompleteTextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -16,6 +19,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import edu.uc.coffeens.stocktracker.R
 import kotlinx.android.synthetic.main.main_fragment.*
+
 
 class MainFragment : Fragment() {
 
@@ -65,10 +69,6 @@ class MainFragment : Fragment() {
         }
     }
 
-    fun getClickedStock(view: View) {
-        Log.d("[SEARCH BAR]", "Clicked a stock.")
-    }
-    
     /**
      * Function to be called by the log on button
      */
@@ -95,5 +95,4 @@ class MainFragment : Fragment() {
             }
         }
     }
-
 }
