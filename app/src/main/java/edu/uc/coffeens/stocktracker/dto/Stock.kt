@@ -25,9 +25,9 @@ data class Stock(
 
     /**
      * Send a stock to Firebase, where it will be stored in a users list
-     * @param string stock to be saved to list
+     * @param symbol ticker to be saved to list
      */
-    fun saveToFirebase(string: String) {
+    fun saveToFirebase(symbol: String) {
         //TODO: Add method for saving things to Firebase
         //get user list
         //if stock exists already tell the user
@@ -36,9 +36,9 @@ data class Stock(
 
     /**
      * Remove a stock from a users list, if it exists
-     * @param string stock to be removed
+     * @param symbol ticker to be removed
      */
-    fun removeFromFirebase(string: String) {
+    fun removeFromFirebase(symbol: String) {
         //TODO: Add method for removing things from Firebase
         //Grab user list
         //See if string exists

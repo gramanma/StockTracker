@@ -1,16 +1,11 @@
 package edu.uc.coffeens.stocktracker.ui.main
 
-import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.AdapterView
-import android.widget.AdapterView.OnItemClickListener
 import android.widget.ArrayAdapter
-import androidx.appcompat.widget.AppCompatAutoCompleteTextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -65,22 +60,31 @@ class MainFragment : Fragment() {
         })
         viewModel.fetchStock()
         btnLogin.setOnClickListener {
-            logon()
+            logUserInOrOut()
         }
     }
 
     /**
      * Function to be called by the log on button
      */
-    private fun logon() {
-        var providers = arrayListOf(
-            AuthUI.IdpConfig.EmailBuilder().build(),
-            AuthUI.IdpConfig.GoogleBuilder().build()
-        )
-        startActivityForResult(
-            AuthUI.getInstance().createSignInIntentBuilder().setAvailableProviders(providers)
-                .build(), AUTH_REQUEST_CODE
-        )
+    private fun logUserInOrOut() {
+        user = FirebaseAuth.getInstance().currentUser
+        if ( user == null) {
+            var providers = arrayListOf(
+                AuthUI.IdpConfig.EmailBuilder().build(),
+                AuthUI.IdpConfig.GoogleBuilder().build()
+            )
+            startActivityForResult(
+                AuthUI.getInstance().createSignInIntentBuilder().setAvailableProviders(providers)
+                    .build(), AUTH_REQUEST_CODE
+            )
+            btnLogin.text = "Logout";
+        } else if (user != null) {
+            FirebaseAuth.getInstance().signOut()
+            btnLogin.text = "Login";
+        }
+
+
         //TODO: Add logic for detecting if user is signed in.
     }
 
