@@ -29,6 +29,9 @@ data class Stock(
      */
     fun saveToFirebase(string: String) {
         //TODO: Add method for saving things to Firebase
+        //get user list
+        //if stock exists already tell the user
+        //if it does not exist add it to list
     }
 
     /**
@@ -37,6 +40,10 @@ data class Stock(
      */
     fun removeFromFirebase(string: String) {
         //TODO: Add method for removing things from Firebase
+        //Grab user list
+        //See if string exists
+        //if so, remove
+        //if not, error
     }
 
 }
