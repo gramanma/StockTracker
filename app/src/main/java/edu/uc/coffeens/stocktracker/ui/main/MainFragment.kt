@@ -29,7 +29,12 @@ class MainFragment : Fragment() {
     private var user: FirebaseUser? = null
 
     companion object {
+        private var user: FirebaseUser? = null
         fun newInstance() = MainFragment()
+        fun getUserID(): String {
+            user = FirebaseAuth.getInstance().currentUser
+            return user!!.uid
+        }
     }
 
     private lateinit var viewModel: MainViewModel
@@ -64,6 +69,8 @@ class MainFragment : Fragment() {
             logUserInOrOut()
         }
     }
+
+
 
     /**
      * Function to be called by the log on button
