@@ -22,7 +22,7 @@ class WatchlistAdapter(private val watchList: List<WatchlistItem>) :
         val currentItem = watchList[position]
 
         holder.lblStockTicker.text = currentItem.stockTicker
-        holder.lblStockName.text = currentItem.stockName
+        holder.lblStockCompany.text = currentItem.stockCompany
         holder.lblStockPrice.text = currentItem.stockPrice
 
     }
@@ -32,7 +32,7 @@ class WatchlistAdapter(private val watchList: List<WatchlistItem>) :
     class WatchlistViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
         val lblStockTicker: TextView = itemView.findViewById(R.id.lblStockTicker)
-        val lblStockName: TextView = itemView.findViewById(R.id.lblStockName)
+        val lblStockCompany: TextView = itemView.findViewById(R.id.lblStockCompany)
         val lblStockPrice: TextView = itemView.findViewById(R.id.lblStockPrice)
 
     }

@@ -17,7 +17,6 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import edu.uc.coffeens.stocktracker.R
 import edu.uc.coffeens.stocktracker.dto.Stock
-import edu.uc.coffeens.stocktracker.dto.WatchlistItem
 import kotlinx.android.synthetic.main.main_fragment.*
 
 
@@ -65,7 +64,10 @@ class MainFragment : Fragment() {
             )
         })
 
-        val watchList = viewModel.generateTestList(15)
+        val watchList = viewModel.getWatchList()
+
+
+        //val watchList = viewModel.generateTestList(15)
 
         rvUserList.adapter = WatchlistAdapter(watchList)
         rvUserList.layoutManager = LinearLayoutManager(context)
@@ -73,11 +75,18 @@ class MainFragment : Fragment() {
 
         actStock.setOnItemClickListener { parent, view, position, id ->
             var selectedStock = parent.getItemAtPosition(position) as Stock
-            print(selectedStock.stockTicker)
-            Toast.makeText(context, selectedStock.stockTicker, Toast.LENGTH_LONG).show()
             tvStockDescription.text = selectedStock.stockDescription
-            viewModel.save(selectedStock)
             btnSaveToList.visibility = View.VISIBLE
+
+            btnSaveToList.setOnClickListener {
+                viewModel.save(selectedStock)
+                Toast.makeText(
+                    context,
+                    "${selectedStock.stockTicker} saved to watchlist",
+                    Toast.LENGTH_SHORT
+                ).show()
+            }
+
         }
 
         viewModel.fetchStock()
