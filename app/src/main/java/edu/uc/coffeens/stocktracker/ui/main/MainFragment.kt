@@ -33,10 +33,10 @@ class MainFragment : Fragment() {
     companion object {
         private var user: FirebaseUser? = null
         fun newInstance() = MainFragment()
-        fun getUserID(): String {
-            user = FirebaseAuth.getInstance().currentUser
-            return user!!.uid
-        }
+//        fun getUserID(): String {
+//            user = FirebaseAuth.getInstance().currentUser
+//            return user!!.uid
+//        }
     }
 
     private lateinit var viewModel: MainViewModel
@@ -66,19 +66,22 @@ class MainFragment : Fragment() {
 
         val watchList = viewModel.getWatchList()
 
-
-        //val watchList = viewModel.generateTestList(15)
-
         rvUserList.adapter = WatchlistAdapter(watchList)
         rvUserList.layoutManager = LinearLayoutManager(context)
         rvUserList.setHasFixedSize(true)
 
         actStock.setOnItemClickListener { parent, view, position, id ->
             var selectedStock = parent.getItemAtPosition(position) as Stock
-            tvStockDescription.text = selectedStock.stockDescription
+            tvStockDescription.text =
+                "Company Description:\n\n" + selectedStock.stockDescription + "\n"
             btnSaveToList.visibility = View.VISIBLE
 
             btnSaveToList.setOnClickListener {
+
+                btnSaveToList.visibility = View.GONE
+                tvStockDescription.text = null
+                actStock.text = null
+
                 viewModel.save(selectedStock)
                 Toast.makeText(
                     context,
@@ -110,7 +113,7 @@ class MainFragment : Fragment() {
                 AuthUI.getInstance().createSignInIntentBuilder().setAvailableProviders(providers)
                     .build(), AUTH_REQUEST_CODE
             )
-            btnLogin.text = "Logout";
+
         } else if (user != null) {
             Log.i("Firebase", "user " + user + "signed out successfully.")
             FirebaseAuth.getInstance().signOut()
@@ -127,6 +130,7 @@ class MainFragment : Fragment() {
             if (requestCode == AUTH_REQUEST_CODE) {
                 user = FirebaseAuth.getInstance().currentUser
                 Log.i("Firebase", "user " + user + "signed in successfully.")
+                btnLogin.text = "Logout";
             }
         }
     }
