@@ -20,33 +20,21 @@
         android:id="@+id/rvUserList"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        tools:listitem="@layout/watchlist_row_layout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnSaveToList" />
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvNews"
-        android:layout_width="match_parent"
-        android:layout_height="300dp"
-        android:scrollbarStyle="insideOverlay"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/rvUserList"
-        tools:itemCount="5"
-        tools:listitem="@layout/recycler_view_item" />
 
     <Button
         android:id="@+id/btnLogin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="52dp"
+        android:layout_marginTop="44dp"
         android:text="Login"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/rvNews"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintTop_toBottomOf="@+id/rvUserList" />
 
     <TextView
         android:id="@+id/tvStockDescription"
