@@ -7,10 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
-<<<<<<< Updated upstream
-=======
 import android.widget.Toast
->>>>>>> Stashed changes
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -29,7 +26,6 @@ class MainFragment : Fragment() {
      */
     private val RESULT_OK = 200
     private val AUTH_REQUEST_CODE = 9000
-
 
     private var user: FirebaseUser? = null
 
@@ -60,8 +56,6 @@ class MainFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
-
-
         viewModel = ViewModelProvider(this).get(MainViewModel::class.java)
         viewModel.stock.observe(viewLifecycleOwner, Observer { stocks ->
             actStock.setAdapter(
@@ -72,17 +66,17 @@ class MainFragment : Fragment() {
         actStock.setOnItemClickListener { parent, view, position, id ->
             var selectedStock = parent.getItemAtPosition(position) as Stock
             print(selectedStock.stockTicker)
-            Toast.makeText(context,selectedStock.stockTicker,Toast.LENGTH_LONG).show()
+            Toast.makeText(context, selectedStock.stockTicker, Toast.LENGTH_LONG).show()
             tvStockDescription.text = selectedStock.stockDescription
+            viewModel.save(selectedStock)
         }
 
         viewModel.fetchStock()
+
         btnLogin.setOnClickListener {
             logUserInOrOut()
         }
     }
-
-
 
     /**
      * Function to be called by the log on button
@@ -118,13 +112,5 @@ class MainFragment : Fragment() {
             }
         }
     }
-<<<<<<< Updated upstream
-}
-=======
-
-
-
-
 
 }
->>>>>>> Stashed changes
