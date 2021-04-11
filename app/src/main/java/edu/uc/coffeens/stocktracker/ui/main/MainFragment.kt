@@ -102,7 +102,6 @@ class MainFragment : Fragment() {
         } else if (user == null) {
             btnLogin.text = "Login"
         }
-
         btnLogin.setOnClickListener {
             logUserInOrOut()
         }
