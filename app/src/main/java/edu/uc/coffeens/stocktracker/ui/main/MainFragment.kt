@@ -7,6 +7,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
+<<<<<<< Updated upstream
+=======
+import android.widget.Toast
+>>>>>>> Stashed changes
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -14,6 +18,7 @@ import com.firebase.ui.auth.AuthUI
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import edu.uc.coffeens.stocktracker.R
+import edu.uc.coffeens.stocktracker.dto.Stock
 import kotlinx.android.synthetic.main.main_fragment.*
 
 
@@ -54,16 +59,23 @@ class MainFragment : Fragment() {
      */
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+
+
+
         viewModel = ViewModelProvider(this).get(MainViewModel::class.java)
         viewModel.stock.observe(viewLifecycleOwner, Observer { stocks ->
             actStock.setAdapter(
-                ArrayAdapter(
-                    context!!,
-                    R.layout.support_simple_spinner_dropdown_item,
-                    stocks
-                )
+                ArrayAdapter(context!!, R.layout.support_simple_spinner_dropdown_item, stocks)
             )
         })
+
+        actStock.setOnItemClickListener { parent, view, position, id ->
+            var selectedStock = parent.getItemAtPosition(position) as Stock
+            print(selectedStock.stockTicker)
+            Toast.makeText(context,selectedStock.stockTicker,Toast.LENGTH_LONG).show()
+            tvStockDescription.text = selectedStock.stockDescription
+        }
+
         viewModel.fetchStock()
         btnLogin.setOnClickListener {
             logUserInOrOut()
@@ -106,4 +118,13 @@ class MainFragment : Fragment() {
             }
         }
     }
+<<<<<<< Updated upstream
 }
+=======
+
+
+
+
+
+}
+>>>>>>> Stashed changes
