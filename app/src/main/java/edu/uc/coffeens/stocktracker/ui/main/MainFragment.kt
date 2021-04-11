@@ -33,10 +33,6 @@ class MainFragment : Fragment() {
     companion object {
         private var user: FirebaseUser? = null
         fun newInstance() = MainFragment()
-//        fun getUserID(): String {
-//            user = FirebaseAuth.getInstance().currentUser
-//            return user!!.uid
-//        }
     }
 
     private lateinit var viewModel: MainViewModel
@@ -48,6 +44,9 @@ class MainFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+
+
+
         return inflater.inflate(R.layout.main_fragment, container, false)
     }
 
@@ -58,30 +57,33 @@ class MainFragment : Fragment() {
         super.onActivityCreated(savedInstanceState)
 
         viewModel = ViewModelProvider(this).get(MainViewModel::class.java)
+
         viewModel.stock.observe(viewLifecycleOwner, Observer { stocks ->
             actStock.setAdapter(
                 ArrayAdapter(context!!, R.layout.support_simple_spinner_dropdown_item, stocks)
             )
         })
 
-        val watchList = viewModel.getWatchList()
 
+        val watchList = viewModel.getWatchList()
         rvUserList.adapter = WatchlistAdapter(watchList)
         rvUserList.layoutManager = LinearLayoutManager(context)
         rvUserList.setHasFixedSize(true)
 
+
         actStock.setOnItemClickListener { parent, view, position, id ->
             var selectedStock = parent.getItemAtPosition(position) as Stock
-            tvStockDescription.text =
-                "Company Description:\n\n" + selectedStock.stockDescription + "\n"
+            tvStockDescription.text = "Company Description:\n\n" + selectedStock.stockDescription + "\n"
             btnSaveToList.visibility = View.VISIBLE
 
             btnSaveToList.setOnClickListener {
 
+                //Remove all the elements.
                 btnSaveToList.visibility = View.GONE
                 tvStockDescription.text = null
                 actStock.text = null
 
+                //Save the stock to a list
                 viewModel.save(selectedStock)
                 Toast.makeText(
                     context,
@@ -93,6 +95,13 @@ class MainFragment : Fragment() {
         }
 
         viewModel.fetchStock()
+
+        user = FirebaseAuth.getInstance().currentUser
+        if (user != null) {
+            btnLogin.text = "Logout";
+        } else if (user == null) {
+            btnLogin.text = "Login"
+        }
 
         btnLogin.setOnClickListener {
             logUserInOrOut()
@@ -117,7 +126,6 @@ class MainFragment : Fragment() {
         } else if (user != null) {
             Log.i("Firebase", "user " + user + "signed out successfully.")
             FirebaseAuth.getInstance().signOut()
-            btnLogin.text = "Login";
         }
     }
 
@@ -130,7 +138,6 @@ class MainFragment : Fragment() {
             if (requestCode == AUTH_REQUEST_CODE) {
                 user = FirebaseAuth.getInstance().currentUser
                 Log.i("Firebase", "user " + user + "signed in successfully.")
-                btnLogin.text = "Logout";
             }
         }
     }
