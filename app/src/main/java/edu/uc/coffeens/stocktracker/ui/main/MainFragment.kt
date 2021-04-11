@@ -7,13 +7,16 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.firebase.ui.auth.AuthUI
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import edu.uc.coffeens.stocktracker.R
+import edu.uc.coffeens.stocktracker.dto.Stock
 import kotlinx.android.synthetic.main.main_fragment.*
 
 
@@ -24,7 +27,6 @@ class MainFragment : Fragment() {
      */
     private val RESULT_OK = 200
     private val AUTH_REQUEST_CODE = 9000
-
 
     private var user: FirebaseUser? = null
 
@@ -54,23 +56,45 @@ class MainFragment : Fragment() {
      */
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+
         viewModel = ViewModelProvider(this).get(MainViewModel::class.java)
         viewModel.stock.observe(viewLifecycleOwner, Observer { stocks ->
             actStock.setAdapter(
-                ArrayAdapter(
-                    context!!,
-                    R.layout.support_simple_spinner_dropdown_item,
-                    stocks
-                )
+                ArrayAdapter(context!!, R.layout.support_simple_spinner_dropdown_item, stocks)
             )
         })
+
+        val watchList = viewModel.getWatchList()
+
+
+        //val watchList = viewModel.generateTestList(15)
+
+        rvUserList.adapter = WatchlistAdapter(watchList)
+        rvUserList.layoutManager = LinearLayoutManager(context)
+        rvUserList.setHasFixedSize(true)
+
+        actStock.setOnItemClickListener { parent, view, position, id ->
+            var selectedStock = parent.getItemAtPosition(position) as Stock
+            tvStockDescription.text = selectedStock.stockDescription
+            btnSaveToList.visibility = View.VISIBLE
+
+            btnSaveToList.setOnClickListener {
+                viewModel.save(selectedStock)
+                Toast.makeText(
+                    context,
+                    "${selectedStock.stockTicker} saved to watchlist",
+                    Toast.LENGTH_SHORT
+                ).show()
+            }
+
+        }
+
         viewModel.fetchStock()
+
         btnLogin.setOnClickListener {
             logUserInOrOut()
         }
     }
-
-
 
     /**
      * Function to be called by the log on button
@@ -106,4 +130,5 @@ class MainFragment : Fragment() {
             }
         }
     }
+
 }
