@@ -1,6 +1,7 @@
 package edu.uc.coffeens.stocktracker.ui.main
 
 import android.util.Log
+import android.view.View
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.google.firebase.firestore.FirebaseFirestore
@@ -8,6 +9,7 @@ import com.google.firebase.firestore.FirebaseFirestoreSettings
 import com.google.firebase.storage.FirebaseStorage
 import edu.uc.coffeens.stocktracker.dto.Stock
 import edu.uc.coffeens.stocktracker.services.StockService
+import kotlinx.android.synthetic.main.main_fragment.*
 
 class MainViewModel : ViewModel() {
     var stock: MutableLiveData<ArrayList<Stock>> = MutableLiveData<ArrayList<Stock>>()
@@ -23,6 +25,7 @@ class MainViewModel : ViewModel() {
         fetchStock()
         firestore = FirebaseFirestore.getInstance()
         firestore.firestoreSettings = FirebaseFirestoreSettings.Builder().build()
+
     }
 
     /**

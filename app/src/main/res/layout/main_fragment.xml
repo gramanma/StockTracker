@@ -20,10 +20,9 @@
         android:id="@+id/rvUserList"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="23dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvStockDescription" />
+        app:layout_constraintTop_toBottomOf="@+id/btnSaveToList" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvNews"
@@ -46,7 +45,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/rvNews" />
+        app:layout_constraintTop_toBottomOf="@+id/rvNews"
+        app:layout_constraintVertical_bias="1.0" />
 
     <TextView
         android:id="@+id/tvStockDescription"
@@ -57,5 +57,29 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/actStock" />
+
+    <Button
+        android:id="@+id/btnSaveToList"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Save to watchlist"
+        android:textSize="12sp"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvStockDescription" />
+
+    <Button
+        android:id="@+id/btnRemoveFromList"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Remove from watchlist"
+        android:textSize="12sp"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toTopOf="@+id/rvUserList"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvStockDescription"
+        app:layout_constraintVertical_bias="0.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

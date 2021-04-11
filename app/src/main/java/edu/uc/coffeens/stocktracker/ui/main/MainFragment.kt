@@ -69,6 +69,7 @@ class MainFragment : Fragment() {
             Toast.makeText(context, selectedStock.stockTicker, Toast.LENGTH_LONG).show()
             tvStockDescription.text = selectedStock.stockDescription
             viewModel.save(selectedStock)
+            btnSaveToList.visibility = View.VISIBLE
         }
 
         viewModel.fetchStock()
